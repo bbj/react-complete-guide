@@ -1,17 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom';     //no .js needed
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+import './index.css';                 //this does not work in regular JS; tells npm start to inject it in HTML
+import App from './App';              //no .js for javascript files
+
+ReactDOM.render(                      //replace "root" <div> by <App />
+  <App />,                            //JSX syntax, transformed into JS; App is a component
+  document.getElementById('root')     //index.html: <body><div id="root"></div></body>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+/*
+    - index.js is the first file to run
+    - react + react-dom = React library
+    - index.html: <body><div id="root"></div></body>
+
+*/
