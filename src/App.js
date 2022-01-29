@@ -1,7 +1,8 @@
-import ExpenseItem from "./components/ExpenseItem";     //NEVER add the .js
+//we import to remind it is used, under the hood, but it is optional
+import React from 'react';
+import Expenses from "./components/Expenses/Expenses";
 
-function App() {
-
+const App = () => {
   //preparing data to be passed to ExpenseItem component
   const expenses = [
     {
@@ -28,12 +29,19 @@ function App() {
   return (
     <div className="App">
       <h1>Let's get started!</h1>
-      <ExpenseItem title={expenses[0].title} amount={expenses[0].amount} date={expenses[0].date}></ExpenseItem>
-      <ExpenseItem title={expenses[1].title} amount={expenses[1].amount} date={expenses[1].date}></ExpenseItem>
-      <ExpenseItem title={expenses[2].title} amount={expenses[2].amount} date={expenses[2].date}></ExpenseItem>
-      <ExpenseItem title={expenses[3].title} amount={expenses[3].amount} date={expenses[3].date}></ExpenseItem>
+      <Expenses items={expenses} />
     </div>
   );
+
+  //here we understand why JSX needs to have a single parent tag! ...
+  //   we cannot return several things! only one! 
+  //   React.createElement('div'...is the wrapper element
+  // return React.createElement(
+  //   'div',
+  //   {},
+  //   React.createElement('h2', {}, "Let's get started!"),
+  //   React.createElement(Expenses, { items: expenses })
+  // );
 }
 
 export default App;                   //index.js: import App from './App';

@@ -1,23 +1,17 @@
+import React from 'react';
+import ExpenseDate from './ExpenseDate';
+import Card from '../UI/Card';
 import './ExpenseItem.css';     //importing CSS in JS does not work, but ok in React
 
-function ExpenseItem(props) {        //same name as file name, a component is just a function!
-
-  const month = props.date.toLocaleString('en-US', { month: 'long' }); //keep JSX simple by doing this here
-  const day = props.date.toLocaleString('en-US', { day: '2-digit' });
-  const year = props.date.getFullYear();
-
+const ExpenseItem = (props) => {        //same name as file name, a component is just a function!
   return (
-    <div className="expense-item">
-      <div>
-        <div>{month}</div>
-        <div>{day}</div>
-        <div>{year}</div>
-      </div>
+    <Card className="expense-item">
+      <ExpenseDate date={props.date} />
       <div className="expense-item__description">
         <h2>{props.title}</h2>
         <div className="expense-item__price">${props.amount}</div>
       </div>
-    </div>
+    </Card>
   );
 }
 
